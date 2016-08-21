@@ -1,0 +1,7 @@
+seajs.config({
+  base: "",
+  alias: {
+    
+  }
+});
+
