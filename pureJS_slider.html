@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            height: 300px;
+            width: 500px;
+            overflow: hidden;
+            position:relative;
+            margin: auto;
+        }
+        .slider-box{
+            height: 300px;
+            min-width: 500px;
+            list-style: none;
+            overflow: hidden;
+            position: relative;
+        }
+        .slider{
+            width: 500px;
+            height: 300px;
+            float: left;
+            position:relative;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <ul class="slider-box" id="ul">
+        <li class="slider">
+            <img src="src/img/p1.jpg">
+        </li>
+        <li class="slider">
+            <img src="src/img/qianduan.jpg">
+        </li>
+        <li class="slider">
+            <img src="src/img/tupian.png">
+        </li>
+    </ul>
+</div>
+
+<script src="src/js/jquery.min.js"></script>
+<script>
+    function next(count){
+        $('.slider-box').animate({
+            left: (-500 * count)+'px'
+        },1000);
+    }
+    function firstPage(){
+        $('.slider-box').animate({
+            left: 0
+        },300);
+    }
+    function slider(){
+        var lis = document.getElementsByTagName('li');
+        var lislength = lis.length;
+        $('.slider-box').width(lislength * 500);
+        var index = 0;
+        var scroll = function(){
+            index++;
+            if(index < lislength){
+                next(index);
+            }else if(index == lislength){
+                firstPage();
+                index = 0;
+            }
+        };
+        setInterval(scroll,3000);
+    }
+    slider()
+</script>
+
+</body>
+</html>
