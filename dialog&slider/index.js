@@ -1,6 +1,7 @@
 define(function(require, exports, module){
     'use strict';
     var $$dialog = require('dialog.js');
+    var $$slider = require('slider.js');
     var index = {
         index: function(){
             $('.btn').on('click',function(){
@@ -13,6 +14,12 @@ define(function(require, exports, module){
                 });
             });
             
+        },
+        slider: function(){
+            $$slider.slider('slider', {
+                interval: 3000,
+                activeClass: 'active'
+            });
         }
     };
     module.exports = index;
