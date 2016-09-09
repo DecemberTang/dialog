@@ -46,6 +46,9 @@
         <li class="slider">
             <img src="image/3.png">
         </li>
+        <li class="slider">
+            <img src="image/1.png">
+        </li>
     </ul>
 </div>
 
@@ -55,11 +58,6 @@
         $('.slider-box').animate({
             left: (-500 * count)+'px'
         },1000);
-    }
-    function firstPage(){
-        $('.slider-box').animate({
-            left: 0
-        },300);
     }
     function slider(){
         var lis = document.getElementsByTagName('li');
@@ -71,8 +69,9 @@
             if(index < lislength){
                 next(index);
             }else if(index == lislength){
-                firstPage();
+                $('.slider-box').css('left',0);
                 index = 0;
+                next(index);
             }
         };
         setInterval(scroll,3000);
