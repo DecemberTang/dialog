@@ -53,6 +53,7 @@
 </div>
 
 <script src="jquery-2.0.3.js"></script>
+<script src="jquery.min.js"></script>
 <script>
     function next(count){
         $('.slider-box').animate({
@@ -70,7 +71,7 @@
                 next(index);
             }else if(index == lislength){
                 $('.slider-box').css('left',0);
-                index = 0;
+                index = 1;
                 next(index);
             }
         };

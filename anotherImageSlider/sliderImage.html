@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 570px;
+            border: 1px solid #000;
+            height: 330px;
+            position: relative;
+        }
+        ul{
+           list-style: none; 
+        }
+        ul.big{
+            margin: 0 auto;
+            width: 300px;
+            height: 230px;
+        }
+        ul.big>li{
+            width: 300px;
+            height: 230px;
+            position: absolute;
+        }
+        ul.big>li img{
+            width: 300px;
+            height: 230px;
+        }
+        ul.small{
+            font-size: 0;
+            min-width: 520px;
+            position: relative;
+        }
+        ul.small>li{
+            width: 100px;
+            height: 100px;
+            float: left;
+        }
+        ul.small>li:not(:last-child){
+            margin-right: 5px;
+        }
+        ul.small img{
+            width: 100px;
+            height: 100px;
+        }
+        .ul-box{
+            position: absolute;
+            width: 520px;
+            overflow: hidden;
+            margin-left: 25px;
+            margin-right: 25px;
+        }
+        .right{
+            width: 25px;
+            height: 100px;
+            display: inline-block;
+            background: #feffdb;
+            float: right;
+            text-align: center;
+            line-height: 100px;
+        }
+        .right:active{
+            background: #b9baa0;
+        }
+        .left{
+            width: 25px;
+            height: 100px;
+            display: inline-block;
+            background: #feffdb;
+            float: left;
+            text-align: center;
+            line-height: 100px;
+        }
+        .left:active{
+            background: #b9baa0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <ul class="big">
+        <li class="big-div1"><img src="../image/2.png" id="p1"></li>
+    </ul>
+    <div class="slider-box">
+        <div class="left" id="left">&lt;</div>
+        <div class="ul-box">
+            <ul class="small" id="small">
+                <li class="small-div"><img src="../image/2.png"></li>
+                <li class="small-div"><img src="../image/3.png"></li>
+                <li class="small-div"><img src="../image/4.png"></li>
+                <li class="small-div"><img src="../image/girl.jpeg"></li>
+                <li class="small-div"><img src="../image/photo2.png"></li>
+                <li class="small-div"><img src="../image/photo3.png"></li>
+                <li class="small-div"><img src="../image/idphoto.png"></li>
+            </ul>
+        </div>
+        <div class="right" id="right">&gt;</div>
+    </div>
+</div>  
+</body>
+<script src="jquery.min.js"></script>
+<!--<script src="jquery-2.0.3.js"></script>-->
+<script type="text/javascript">
+   function changeImage(){ //原生JS实现
+       var small = document.getElementById('small');
+       small.addEventListener('click',function(e){
+           if(e.target.tagName.toUpperCase() == 'IMG'){
+               //debugger;
+               var src = e.target.src;
+               document.getElementById('p1').src = src;
+           }
+       })
+   }
+    changeImage();
+    function changeImage1(){//jquery实现
+        $('.small').delegate('.small img','click',function(){
+            var $this = $(this);
+            //debugger;
+            var src = $this.attr('src');
+            $('#p1').attr('src',src);
+
+        });
+    }
+    function slide(){
+        var images = document.getElementsByClassName('small-div');
+        var length = images.length;
+        $('.small').width(length*100+(length-1)*5);
+        var count = 1;
+        $('.right').on('click',function(){
+            console.log('right count '+count);
+            count = rightmove(count,length);
+
+        });
+        $('.left').on('click',function(){
+            //count++;
+            console.log('left count '+count);
+            count = leftmove(count,length);
+
+        })
+    }
+    slide();
+    function rightmove(count,length){
+        var left = parseInt($('.small').css('left'));
+        console.log(left);
+        if(count<(length-5)){
+            $('.small').animate({
+                left: -105*count+'px'
+            },800);
+            count++;
+            return count;
+        }else if(count == (length-5)){
+            $('.small').animate({
+                left: -100+(-105*(count-1))+'px'
+            },800);
+            count++;
+            return count;
+        }else{
+            //count++;
+            return count;
+        }
+    }
+    function leftmove(count,length){
+        var left = parseInt($('.small').css('left'));
+        console.log(left);
+        if(left!=0 && count == length-4){
+            $('.small').animate({
+                left: left+100+'px'
+            },800);
+            count--;
+            return count;
+        }
+        else if(left != 0 && count != length-4){
+            $('.small').animate({
+                left: left+105+'px'
+            },800);
+            count--;
+            return count;
+        }else{
+            return 1;
+        }
+    }
+</script>
+</html>
