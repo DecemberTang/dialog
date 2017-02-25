@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+    .box{
+        width: 100px;
+        height: 100px;
+        background-color: #f50;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+<script type="text/javascript">
+    (function (){
+        var div = document.getElementsByClassName('box')[0];
+        div.addEventListener('mousedown',function(e){
+            var startX = e.clientX,
+                startY = e.clientY;
+            var boxX = div.offsetLeft,
+                boxY = div.offsetTop;
+            var relativeX = startX - boxX,
+                relativeY = startY - boxY;
+            console.log(startX+" "+startY+" "+boxX+" "+boxY);
+            div.addEventListener('mousemove',moveHandler,true);
+            div.addEventListener('mouseup',upHandler,true);
+            function moveHandler(e){
+                div.style.left = e.clientX - relativeX + 'px';
+                div.style.top = e.clientY - relativeY + 'px';
+            }
+            function upHandler(e){
+            div.removeEventListener('mousemove',moveHandler,true);
+            div.removeEventListener('upHandler',upHandler,true);
+        }
+        });      
+
+    })();
+</script>
+</body>
+</html>

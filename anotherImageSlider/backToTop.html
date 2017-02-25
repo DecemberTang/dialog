@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+    .backBtn{
+        width: 80px;
+        height: 50px;
+        background: #f50;
+        position: fixed;
+        text-align: center;
+        line-height: 50px;
+        color: #fff;
+        border-radius: 5px;
+        right: 10px;
+        top: 400px;
+        display: none;
+    }
+    .box{
+        border: 2px solid #ccc;
+        height: 2000px;
+    }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="backBtn" id="backBtn">回到顶部</div>
+<script src="jquery.min.js"></script>
+<script type="text/javascript">
+(function(){
+    $(window).on('scroll',function(){
+        var $this = $(this);
+        var len = $this.scrollTop();
+        if (len >= 200){
+            $('#backBtn').show();
+        }else {
+            $('#backBtn').hide();
+        }
+    });
+    $('#backBtn').on('click',function(){
+        console.log($(document).scrollTop());
+        $('body').animate({
+            scrollTop: 0
+        },500);
+        //$(document).scrollTop(0);
+    });
+})();
+    
+</script>
+</body>
+</html>

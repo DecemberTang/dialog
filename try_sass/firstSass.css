@@ -1,0 +1,41 @@
+@charset "UTF-8";
+div {
+  color: #87ceeb;
+  height: 200px;
+  width: 200px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px; }
+
+div .content {
+  color: #87ceeb;
+  line-height: 200px; }
+div .content1 {
+  color: #f50;
+  line-height: 200px;
+  border: 1px solid #87ceeb; }
+
+.content a, .content .yue {
+  color: #87ceeb; }
+  .content a:hover, .content .yue:hover {
+    color: #f50; }
+
+a:hover, .yue:hover {
+  color: #f50; }
+a:visit, .yue:visit {
+  color: #87ceeb; }
+a:avtive, .yue:avtive {
+  color: #f6efa9; }
+
+.test, .hello {
+  background: #f6efa9;
+  /* 这种注释内容会出现在生成的css文件中 */
+  width: 50px;
+  height: 50px; }
+
+.content a, .content .yue {
+  color: #f50; }
+  .content a:hover, .content .yue:hover {
+    color: #f50; }
+
+/*# sourceMappingURL=firstSass.css.map */

@@ -1,0 +1,15 @@
+$background : #f6efa9;
+.test {
+    background: $background; /* 这种注释内容会出现在生成的css文件中 */
+    width: 50px;
+    height: 50px;
+}
+.content a {
+    color: /* 这种注释内容会出现在生成的css文件中 */ #f50;
+    &:hover {
+        color: $orange;
+    }
+}
+.hello {
+    @extend .test;
+}

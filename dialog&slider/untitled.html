@@ -1,0 +1,46 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<title>jQuery实现CheckBox全选、全不选</title>
+<script src="http://code.jquery.com/jquery-1.4.4.min.js" type="text/javascript"></script>    <script type="text/javascript">
+        // $(function() {
+        //    $("#checkAll").click(function() {
+        //         $('input[name="subBox"]').attr("checked",this.checked); 
+        //     });
+        //     var $subBox = $("input[name='subBox']");
+        //     $subBox.click(function(){
+        //         $("#checkAll").attr("checked",$subBox.length == $("input[name='subBox']:checked").length ? true : false);
+        //     });
+        // });
+        
+    </script>
+ 
+</head>
+<body>
+    <div>
+        <input id="checkAll" type="checkbox" />全选
+        <input name="subBox" type="checkbox" />项1
+        <input name="subBox" type="checkbox" />项2
+        <input name="subBox" type="checkbox" />项3
+        <input name="subBox" type="checkbox" />项4
+    </div>
+    <button id='btn'>click</button>
+    <script src="jquery-2.0.3.js"></script>
+    <script type="text/javascript">
+    function a(){
+            $('#btn').on('click',function(){
+                if($('input[name="subBox"]').prop('checked')){
+                    console.log(1);
+                    $('input[name="subBox"]').prop("checked",false);
+                    //$('input[name="subBox"]').prop("checked",false); 
+                }else{
+                    console.log(2);
+                    $('input[name="subBox"]').prop("checked",true); 
+                }
+                    
+            });
+        }
+        a();
+    </script>
+</body>
+</html>
